@@ -1,0 +1,425 @@
+{
+  "version": 1,
+  "locations": [
+    {
+      "id": "tivoli",
+      "name": "Tivoli",
+      "roles": [
+        "Gæst med sukkervat",
+        "Rutsjebanekontrollør",
+        "Pjerrot",
+        "Tivoligardist",
+        "Pølsemand",
+        "Turist med kamera",
+        "Barn med ballon",
+        "Gartner"
+      ]
+    },
+    {
+      "id": "roskilde-festival",
+      "name": "Roskilde Festival",
+      "roles": [
+        "Musiker på den store scene",
+        "Frivillig ved indgangen",
+        "Lydtekniker",
+        "Festivalgæst i gummistøvler",
+        "Vagt foran scenen",
+        "Kok i en madbod",
+        "Fotograf",
+        "Teltnabo"
+      ]
+    },
+    {
+      "id": "kolonihave",
+      "name": "Kolonihave",
+      "roles": [
+        "Kolonihaveejer",
+        "Nabo med hækkeklipper",
+        "Formand for haveforeningen",
+        "Barnebarn på besøg",
+        "Gæst til grillaften",
+        "Haveentusiast med drivhus",
+        "Maler der maler skuret",
+        "Hundelufter på stien"
+      ]
+    },
+    {
+      "id": "folkeskole",
+      "name": "Folkeskole",
+      "roles": [
+        "Klasselærer",
+        "Skoleleder",
+        "Elev i 3. klasse",
+        "Pedel",
+        "Skolesekretær",
+        "Fritidspædagog",
+        "Vikar",
+        "Elevrådsformand"
+      ]
+    },
+    {
+      "id": "fly",
+      "name": "Fly",
+      "roles": [
+        "Pilot",
+        "Andenpilot",
+        "Stewardesse",
+        "Passager ved vinduet",
+        "Passager med baby",
+        "Forretningsrejsende",
+        "Turist på vej på ferie",
+        "Flymekaniker"
+      ]
+    },
+    {
+      "id": "hospital",
+      "name": "Hospital",
+      "roles": [
+        "Overlæge",
+        "Sygeplejerske",
+        "Portør",
+        "Kirurg",
+        "Besøgende med blomster",
+        "Patient",
+        "Medarbejder i kantinen",
+        "Jordemoder"
+      ]
+    },
+    {
+      "id": "strand",
+      "name": "Strand",
+      "roles": [
+        "Livredder",
+        "Ismand",
+        "Barn der bygger sandslot",
+        "Badegæst",
+        "Surfer",
+        "Strandvolleyspiller",
+        "Hundeejer på gåtur",
+        "Vinterbader"
+      ]
+    },
+    {
+      "id": "supermarked",
+      "name": "Supermarked",
+      "roles": [
+        "Kassedame",
+        "Butikschef",
+        "Kunde med fuld indkøbsvogn",
+        "Varepåfylder",
+        "Slagter i kødafdelingen",
+        "Bager i brødafdelingen",
+        "Barn der vil have slik",
+        "Vagt ved indgangen"
+      ]
+    },
+    {
+      "id": "julefrokost",
+      "name": "Julefrokost",
+      "roles": [
+        "Chefen der holder tale",
+        "Kollega i julesweater",
+        "Kok",
+        "Tjener",
+        "Musiker i festbandet",
+        "Ny medarbejder",
+        "Arrangør fra festudvalget",
+        "Vinder af pakkelegen"
+      ]
+    },
+    {
+      "id": "bryllup",
+      "name": "Bryllup",
+      "roles": [
+        "Brud",
+        "Brudgom",
+        "Forlover",
+        "Toastmaster",
+        "Brudens mor",
+        "Fotograf",
+        "Blomsterpige",
+        "Gæst der holder tale"
+      ]
+    },
+    {
+      "id": "biograf",
+      "name": "Biograf",
+      "roles": [
+        "Gæst med popcorn",
+        "Billetsælger",
+        "Operatør i maskinrummet",
+        "Filmanmelder",
+        "Teenager på forreste række",
+        "Kioskmedarbejder",
+        "Gæst der kommer for sent",
+        "Biografdirektør"
+      ]
+    },
+    {
+      "id": "fitnesscenter",
+      "name": "Fitnesscenter",
+      "roles": [
+        "Personlig træner",
+        "Spinninginstruktør",
+        "Medlem på løbebåndet",
+        "Receptionist",
+        "Yogainstruktør",
+        "Nyt medlem",
+        "Vægtløfter",
+        "Rengøringsassistent"
+      ]
+    },
+    {
+      "id": "rumstation",
+      "name": "Rumstation",
+      "roles": [
+        "Kommandør",
+        "Astronaut",
+        "Rumforsker",
+        "Ingeniør",
+        "Rumturist",
+        "Pilot på rumfærgen",
+        "Botaniker med rumplanter",
+        "Fotograf ved udsigtsvinduet"
+      ]
+    },
+    {
+      "id": "piratskib",
+      "name": "Piratskib",
+      "roles": [
+        "Kaptajn",
+        "Styrmand",
+        "Kok i kabyssen",
+        "Udkig i masten",
+        "Skibsdreng",
+        "Kanonér",
+        "Fange i lasten",
+        "Pirat med papegøje"
+      ]
+    },
+    {
+      "id": "zoologisk-have",
+      "name": "Zoologisk have",
+      "roles": [
+        "Dyrepasser",
+        "Dyrlæge",
+        "Lærer med skoleklasse",
+        "Naturfotograf",
+        "Billetsælger",
+        "Guide ved elefanterne",
+        "Forsker der studerer aber",
+        "Forælder med klapvogn"
+      ]
+    },
+    {
+      "id": "campingplads",
+      "name": "Campingplads",
+      "roles": [
+        "Campingpladsejer",
+        "Forælder i campingvognen",
+        "Teltcamper",
+        "Tysk turist",
+        "Barn på hoppepuden",
+        "Medarbejder i kiosken",
+        "Fastliggende campist",
+        "Livredder ved poolen"
+      ]
+    },
+    {
+      "id": "skiferie",
+      "name": "Skiferie",
+      "roles": [
+        "Skilærer",
+        "Liftoperatør",
+        "Snowboarder",
+        "Nybegynder på ski",
+        "Pistemaskinefører",
+        "Hyttevært",
+        "Bjergredder",
+        "Medarbejder i skiudlejning"
+      ]
+    },
+    {
+      "id": "cruiseskib",
+      "name": "Cruiseskib",
+      "roles": [
+        "Kaptajn",
+        "Underholder",
+        "Kok",
+        "Passager på soldækket",
+        "Tjener",
+        "Danseinstruktør",
+        "Maskinmester",
+        "Udflugtsguide"
+      ]
+    },
+    {
+      "id": "restaurant",
+      "name": "Restaurant",
+      "roles": [
+        "Køkkenchef",
+        "Tjener",
+        "Hovmester",
+        "Opvasker",
+        "Gæst med fødselsdag",
+        "Madanmelder",
+        "Restaurantejer",
+        "Souschef"
+      ]
+    },
+    {
+      "id": "politistation",
+      "name": "Politistation",
+      "roles": [
+        "Politibetjent",
+        "Kriminalassistent",
+        "Vagthavende",
+        "Borger hvis cykel er stjålet",
+        "Advokat",
+        "Journalist",
+        "Hundefører",
+        "Kontorfuldmægtig"
+      ]
+    },
+    {
+      "id": "bank",
+      "name": "Bank",
+      "roles": [
+        "Bankrådgiver",
+        "Kasserer",
+        "Filialdirektør",
+        "Kunde der vil oprette konto",
+        "Sikkerhedsvagt",
+        "Pengetransportør",
+        "Praktikant",
+        "Rengøringsassistent"
+      ]
+    },
+    {
+      "id": "teater",
+      "name": "Teater",
+      "roles": [
+        "Skuespiller",
+        "Instruktør",
+        "Sufflør",
+        "Kostumedesigner",
+        "Lysmester",
+        "Gæst på første række",
+        "Billetkontrollør",
+        "Garderobeansat"
+      ]
+    },
+    {
+      "id": "frisoersalon",
+      "name": "Frisørsalon",
+      "roles": [
+        "Frisør",
+        "Kunde der skal klippes",
+        "Lærling",
+        "Saloneier",
+        "Kunde der får farvet hår",
+        "Barn til første klipning",
+        "Neglestylist",
+        "Receptionist"
+      ]
+    },
+    {
+      "id": "bibliotek",
+      "name": "Bibliotek",
+      "roles": [
+        "Bibliotekar",
+        "Studerende til eksamen",
+        "Barn til højtlæsning",
+        "Forfatter til foredrag",
+        "Pensionist der læser avis",
+        "Studentermedhjælper",
+        "Forælder med småbørn",
+        "Rengøringsassistent"
+      ]
+    },
+    {
+      "id": "tog",
+      "name": "Tog",
+      "roles": [
+        "Togfører",
+        "Lokomotivfører",
+        "Pendler med computer",
+        "Studerende",
+        "Passager i stillezonen",
+        "Sælger med kaffevogn",
+        "Turist med kuffert",
+        "Barn i familiezonen"
+      ]
+    },
+    {
+      "id": "fodboldstadion",
+      "name": "Fodboldstadion",
+      "roles": [
+        "Målmand",
+        "Angriber",
+        "Dommer",
+        "Træner",
+        "Fan med halstørklæde",
+        "Pølsesælger",
+        "Sportsjournalist",
+        "Stadionspeaker"
+      ]
+    },
+    {
+      "id": "hotel",
+      "name": "Hotel",
+      "roles": [
+        "Receptionist",
+        "Piccolo",
+        "Hoteldirektør",
+        "Forretningsrejsende",
+        "Gæst på bryllupsrejse",
+        "Kok ved morgenbuffeten",
+        "Concierge",
+        "Stuepige"
+      ]
+    },
+    {
+      "id": "museum",
+      "name": "Museum",
+      "roles": [
+        "Museumsinspektør",
+        "Guide",
+        "Vagt",
+        "Elev på ekskursion",
+        "Kunstner",
+        "Turist med audioguide",
+        "Konservator",
+        "Medarbejder i museumsbutikken"
+      ]
+    },
+    {
+      "id": "bondegaard",
+      "name": "Bondegård",
+      "roles": [
+        "Landmand",
+        "Fodermester",
+        "Dyrlæge",
+        "Landbrugselev",
+        "Barn på besøg fra byen",
+        "Sælger i gårdbutikken",
+        "Tømrer der bygger ny stald",
+        "Mælkebilschauffør"
+      ]
+    },
+    {
+      "id": "byggeplads",
+      "name": "Byggeplads",
+      "roles": [
+        "Murer",
+        "Tømrer",
+        "Kranfører",
+        "Elektriker",
+        "Arkitekt",
+        "Byggeleder",
+        "Lærling",
+        "Nabo der klager over støj"
+      ]
+    }
+  ]
+}
