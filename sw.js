@@ -1,8 +1,14 @@
-// Offline support: the app shell and the library are cached, so the app opens without network.
-// Bump VERSION when files change, so phones fetch the new ones.
-const VERSION = "v8";
+// Offline support. Every file the app needs is cached when the service worker installs, and the
+// app is served from that cache, so it opens instantly with no network (or a slow train wifi).
+// Bump VERSION when files change: phones then fetch the whole new version in the background,
+// switch to it only when every file arrived, and the page reloads onto it.
+const VERSION = "v10";
+const CACHE = `shell-${VERSION}`;
 const SHELL = [
   "./", "index.html", "manifest.webmanifest", "css/app.css",
+  "fonts/bricolage-grotesque.woff2",
+  "fonts/figtree.woff2",
+  "data/games/bingo.json",
   "data/games/bomben.json",
   "data/games/helst.json",
   "data/games/hvem-af-os.json",
@@ -16,6 +22,7 @@ const SHELL = [
   "data/games/tabu.json",
   "data/games/tegn-og-gaet.json",
   "js/app.js",
+  "js/bingo-logic.js",
   "js/components.js",
   "js/die.js",
   "js/games/bomben.js",
@@ -30,7 +37,6 @@ const SHELL = [
   "js/games/jeg-har-aldrig.js",
   "js/games/kategorier-logic.js",
   "js/games/kategorier.js",
-  "js/games/musikquiz.js",
   "js/games/paa-panden.js",
   "js/games/quiz.js",
   "js/games/rng.js",
@@ -42,58 +48,41 @@ const SHELL = [
   "js/games/tabu.js",
   "js/games/tegn-og-gaet.js",
   "js/games/ui.js",
-  "js/games/varulv-logic.js",
-  "js/games/varulv.js",
   "js/icons.js",
-  "js/invite.js",
+  "js/offline.js",
   "js/prefs.js",
-  "js/qr.js",
-  "js/share.js",
-  "js/spotify.js",
   "js/ui.js",
+  "js/views/bingo.js",
   "js/views/game.js",
   "js/views/hub.js",
-  "js/views/join.js",
   "icons/icon.svg", "icons/icon-180.png", "icons/icon-192.png", "icons/icon-512.png",
 ];
 
 self.addEventListener("install", (event) => {
-  // One file at a time, so a single missing file doesn't stop the rest from being cached.
-  event.waitUntil(caches.open(`shell-${VERSION}`)
-    .then((c) => Promise.allSettled(SHELL.map((path) => c.add(path))))
+  // All or nothing: if a file fails, this version isn't installed and the old one keeps working.
+  event.waitUntil(caches.open(CACHE)
+    .then((c) => c.addAll(SHELL.map((path) => new Request(path, { cache: "reload" }))))
     .then(() => self.skipWaiting()));
 });
 
 self.addEventListener("activate", (event) => {
   event.waitUntil(caches.keys()
-    .then((keys) => Promise.all(keys.filter((k) => k !== `shell-${VERSION}` && k !== "fonts").map((k) => caches.delete(k))))
+    .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 
 self.addEventListener("fetch", (event) => {
   const url = new URL(event.request.url);
-  if (event.request.method !== "GET") return;
+  if (event.request.method !== "GET" || url.origin !== location.origin) return;
+  event.respondWith(caches.match(event.request, { ignoreSearch: true })
+    .then((cached) => cached || fetch(event.request))
+    .catch(() => caches.match("index.html")));
+});
 
-  // Google Fonts: serve from cache, refresh in the background.
-  if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") {
-    event.respondWith(caches.open("fonts").then(async (cache) => {
-      const cached = await cache.match(event.request);
-      const fresh = fetch(event.request).then((res) => { cache.put(event.request, res.clone()); return res; }).catch(() => cached);
-      return cached || fresh;
-    }));
-    return;
-  }
-
-  // Our own files: network first so updates show up, cache when offline.
-  if (url.origin === location.origin) {
-    event.respondWith(fetch(event.request)
-      .then((res) => {
-        if (res.ok) {
-          const copy = res.clone(); // clone now, before the page reads the body
-          caches.open(`shell-${VERSION}`).then((c) => c.put(event.request, copy));
-        }
-        return res;
-      })
-      .catch(() => caches.match(event.request, { ignoreSearch: true }).then((r) => r || caches.match("index.html"))));
-  }
+// The start screen asks whether everything is cached, to show "Klar uden net".
+self.addEventListener("message", (event) => {
+  if (event.data !== "status") return;
+  event.waitUntil(caches.open(CACHE)
+    .then((c) => Promise.all(SHELL.map((path) => c.match(path))))
+    .then((hits) => event.ports[0]?.postMessage({ version: VERSION, missing: hits.filter((r) => !r).length })));
 });

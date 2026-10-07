@@ -9,10 +9,6 @@ function set(key, value) {
 
 export const newId = () => (globalThis.crypto?.randomUUID ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(16).slice(2)}`);
 
-/** This phone's player name, used as the default player and on invitations. */
-export function myName() { return get("kt-me", {}).name || ""; }
-export function setMyName(name) { set("kt-me", { ...get("kt-me", {}), name: name.trim() }); }
-
 // People you've played with, most recent first, offered as chips in the next game.
 export function recentPlayers() { return get("kt-players", []); }
 export function rememberPlayers(names) {

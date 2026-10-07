@@ -1,10 +1,10 @@
-// Entry point: routes between the hub, game setup, the game itself and game links,
+// Entry point: routes between the hub, game setup, the game itself and the bingo board,
 // and registers the service worker.
 import { h, mount } from "./ui.js";
 import { hubView } from "./views/hub.js";
 import { gamePlayView, gameSetupView } from "./views/game.js";
-import { joinView } from "./views/join.js";
-import { handleRedirect } from "./spotify.js";
+import { bingoView } from "./views/bingo.js";
+import { registerServiceWorker } from "./offline.js";
 
 const root = document.getElementById("app");
 
@@ -19,7 +19,7 @@ const app = {
 async function show(route, param, extra) {
   if (route === "spil" && param === "ny" && extra) await gameSetupView(root, app, extra);
   else if (route === "spil") await gamePlayView(root, app);
-  else if (route === "delt" && param) await joinView(root, app, param);
+  else if (route === "bingo") bingoView(root, app);
   else hubView(root, app);
 }
 
@@ -57,11 +57,6 @@ function render() {
 }
 
 window.addEventListener("hashchange", render);
-// Coming back from Spotify's login: finish it before showing anything.
-const spotify = await handleRedirect().catch(() => ({ error: "network" }));
-if (spotify?.error) sessionStorage.setItem("kt-spotify-error", spotify.error);
 render();
 
-if ("serviceWorker" in navigator && location.protocol !== "file:") {
-  navigator.serviceWorker.register("sw.js").catch(() => {});
-}
+registerServiceWorker();

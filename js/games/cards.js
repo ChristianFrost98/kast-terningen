@@ -2,7 +2,20 @@
 // at once with their hands, next card. Used by "Hvem af os" and "Hvad vil du helst".
 import { h, mount } from "../ui.js";
 import { seededShuffle } from "./rng.js";
-import { gameTop } from "./ui.js";
+import { chips, gameTop } from "./ui.js";
+
+/** Settings for games with a classic list and a travel list ("rejse") in their data. */
+export const deckDefaults = { deck: "blandet" };
+export function deckSettings({ settings: s, redraw }) {
+  return [h("section", { class: "field" }, h("h3", { style: "margin:0" }, "Bunke"),
+    chips([{ id: "blandet", label: "Blandet" }, { id: "klassisk", label: "Klassikere" }, { id: "rejse", label: "På rejsen" }],
+      () => s.deck, (v) => { s.deck = v; redraw(); }))];
+}
+export function pickDeck(classic, travel = [], deck = "blandet") {
+  if (deck === "rejse") return travel;
+  if (deck === "klassisk") return classic;
+  return [...classic, ...travel];
+}
 
 let countdown = null;
 export const stopCountdown = () => { if (countdown) { clearInterval(countdown); countdown = null; } };

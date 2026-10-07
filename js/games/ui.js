@@ -8,16 +8,6 @@ export function chips(options, selected, pick) {
   }, o.label)));
 }
 
-/** "Hver sin telefon" or "Én telefon" for games that can do both. Sets settings.mode. */
-export function modeTiles(settings, redraw) {
-  const tile = (mode, title, hint) => h("button", { class: "tile", type: "button", "aria-pressed": String(settings.mode === mode),
-    onclick: () => { settings.mode = mode; redraw(); } }, title, h("span", { class: "meta" }, hint));
-  return h("section", { class: "field" }, h("h3", { style: "margin:0" }, "Hvordan spiller I?"),
-    h("div", { class: "tiles" },
-      tile("multi", "Hver sin telefon", "Alle scanner én QR-kode"),
-      tile("single", "Én telefon", "Den går på omgang")));
-}
-
 /** Top bar in game mode: leave on the left, game name in the middle, extra on the right. */
 export function gameTop({ name, onLeave, right = null }) {
   return h("div", { class: "game-top" },
